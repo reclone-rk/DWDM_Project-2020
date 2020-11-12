@@ -2,6 +2,7 @@
 using namespace std;
 
 int main(){
+    cout<<"Enter K value and Input Item"<<endl;
     int inpk;
     cin>>inpk;
     char input;

@@ -26,6 +26,24 @@ const ll SZ = 107;
 const ll N = 1e5+7;
 const ll M = 2e5+7;
 
+std::string random_string(std::size_t length)
+{
+    const std::string CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
+
+    std::random_device random_device;
+    std::mt19937 generator(random_device());
+    std::uniform_int_distribution<> distribution(0, CHARACTERS.size() - 1);
+
+    std::string random_string;
+
+    for (std::size_t i = 0; i < length; ++i)
+    {
+        random_string += CHARACTERS[distribution(generator)];
+    }
+
+    return random_string;
+}
+
 ll pwr(ll x, ll y, ll MO)
 {
     ll r = 1LL;
@@ -56,6 +74,7 @@ void solve()
 		int len = 1+rand()%10;
 
 		string s;
+        // s = random_string(len);
 		for(int i=0;i<len;i++)
 		{
 			s += alpha[rand()%26];
