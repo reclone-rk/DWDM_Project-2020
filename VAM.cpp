@@ -40,7 +40,10 @@ int main(){
     std::chrono::seconds dura( 5);
     std::this_thread::sleep_for( dura );
     for(auto it = vamDS.begin(); it != vamDS.end(); it++){
-        cout<<"__________________________________________________________________________________________\n\n";
+         for(int l=0; l<180; l++){
+            cout<<"_";
+        }
+        cout<<"\n\n";
         cout<<(it->first)<<": ";
         vector<int>vj = it->second;
         for(int j=0; j<vj.size(); j++){
@@ -48,7 +51,10 @@ int main(){
         }
         cout<<endl;
     }
-    cout<<"__________________________________________________________________________________________\n\n";
+    for(int l=0; l<180; l++){
+        cout<<"_";
+    }
+    cout<<"\n\n";
     vector<int>vj = vamDS[ch];
     for(int i=0; i<vj.size(); i++){
         int sid = vj[i];

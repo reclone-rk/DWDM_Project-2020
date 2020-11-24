@@ -35,6 +35,7 @@ printf "\rLoading Dataset : [${_fill// /#}${_empty// /-}] ${_progress}%%"
 }
 
 # Variables
+start=`date +%s`
 _start=1
 
 # This accounts as the "totalState" variable for the ProgressBar function
@@ -50,7 +51,11 @@ cd dataset
 g++ generator.cpp
 ./a.out
 cd ..
+end=`date +%s`
+runtime=$((end-start))
+printf '\nTime Used : '
 printf '\nDataset created!\n'
+# echo $runtime Seconds.
 
 # Running NAM algorithm
 printf '\nRunning NAM algorithm...\n'
@@ -60,10 +65,13 @@ do
     sleep 0.05
     LoadingDataset ${number} ${_end}
 done
-printf '\nEnter Values\n'
 ./a.out
 printf '\nNAM Completed!\n'
-# Running NAM algorithm
+
+
+
+
+# Running VAM algorithm
 printf '\nRunning VAM algorithm...\n'
 g++ VAM.cpp
 for number in $(seq ${_start} ${_end})
@@ -72,3 +80,20 @@ do
     LoadingDataset ${number} ${_end}
 done
 ./a.out
+printf '\n\n VAM Completed!\n\n'
+
+
+
+
+#Running VIAM Algorithm
+
+printf '\nRunning VIAM algorithm...\n'
+g++ VIAM.cpp
+for number in $(seq ${_start} ${_end})
+do
+    sleep 0.05
+    LoadingDataset ${number} ${_end}
+done
+./a.out
+printf '\n\n VIAM Completed!\n\n'
+
