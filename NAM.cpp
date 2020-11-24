@@ -2,14 +2,17 @@
 using namespace std;
 
 int main(){
-    cout<<"Enter K value and Input Item"<<endl;
+    cout<<"\n\nEnter K value and Input Item : \n\n"<<endl;
     int inpk;
     cin>>inpk;
     char input;
     cin>>input;
     vector<int>v(26,0);
     fstream newfile;
-    newfile.open("db.txt",ios::in);
+    newfile.open("dataset/db.txt",ios::in);
+    cout<<"\nComputing elements...\n";
+    std::chrono::seconds dura( 5);
+    std::this_thread::sleep_for( dura );
     if (newfile.is_open()){
         string tp;
         while(getline(newfile, tp)){
@@ -37,10 +40,16 @@ int main(){
     	ans.push_back({v[i],i+'a'});
     }
     sort(ans.begin(),ans.end(), greater<pair<int,char>>());
-
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"These are the top K elements we have : \n\n\n";
+    cout<<"\t\t-------\n";
     for(int i=0;i<min(inpk,(int)ans.size());i++)
     {
-    	cout<<ans[i].second<<" ";
+        cout<<"\t\t|  "<<ans[i].second<<"  |\n";
+        cout<<"\t\t-------\n";
     }
+    cout<<"\n\n";
     return 0;
 }

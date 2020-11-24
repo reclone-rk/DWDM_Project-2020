@@ -66,7 +66,7 @@ vector<char> alpha;
 
 void solve()
 {
-	int N = 1000;
+	int N = 100;
 	for(char i='a';i<='z';i++)
 		alpha.pb(i);
 
