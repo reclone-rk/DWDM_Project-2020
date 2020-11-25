@@ -1,7 +1,7 @@
 #!/bin/sh
-echo "******** Mining top- k co-occurrence items with sequential pattern ***********"
-echo "Creating Dataset..."
+echo -e "\033[1m******** Mining top- k co-occurrence items with sequential pattern ***********\033[0m\n\n"
 
+echo -e "\033[1mCreating Dataset...\033[0m\n\n"
 function ProgressBar {
 # Process data
     let _progress=(${1}*100/${2}*100)/100
@@ -14,7 +14,7 @@ function ProgressBar {
 # 1.2 Build progressbar strings and print the ProgressBar line
 # 1.2.1 Output example:                           
 # 1.2.1.1 Progress : [########################################] 100%
-printf "\rProgress : [${_fill// /#}${_empty// /-}] ${_progress}%%"
+printf "\r\033[1mProgress\033[0m : [${_fill// /#}${_empty// /-}] ${_progress}%%"
 
 }
 
@@ -53,8 +53,7 @@ g++ generator.cpp
 cd ..
 end=`date +%s`
 runtime=$((end-start))
-printf '\nTime Used : '
-printf '\nDataset created!\n'
+printf '\n\033[1mDataset Created!\033[0m\n'
 # echo $runtime Seconds.
 
 # Running NAM algorithm
@@ -95,5 +94,6 @@ do
     LoadingDataset ${number} ${_end}
 done
 ./a.out
-printf '\n\n VIAM Completed!\n\n'
+echo -e "\033[1mVIAM Completed!\033[0m\n\n"
+# printf '\n\n VIAM Completed!\n\n'
 

@@ -6,6 +6,8 @@ bool cmp(const pair<char, int>&a, const pair<char,int>&b){
 }
 
 int main(){
+    clock_t start, end; 
+    start = clock(); 
     char ch;
     int K;
     cout<<"\n\nEnter K value and Input Item\n\n"<<endl;
@@ -77,5 +79,9 @@ int main(){
         cout<<"\t\t-------\n";
     }
     cout<<"\n\n";
+    end = clock(); 
+    double time_taken = double(end - start) / double(CLOCKS_PER_SEC); 
+    cout << "Time taken by program is : " << fixed  << time_taken << setprecision(5); 
+    cout << " sec " << endl; 
     return 0;
 }
