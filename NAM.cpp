@@ -42,7 +42,15 @@ int main(){
         }
         newfile.close();
     }
-
+    int b=1;
+    for(int i=0;i<1000;i++)
+    {
+        for(int j=0;j<1000;j++)
+        {
+            b=0;
+        }
+    }
+            
     vector<pair<int,char>>ans;
     for(int i=0;i<26;i++)
     {
