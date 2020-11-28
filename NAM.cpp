@@ -1,78 +1,69 @@
 #include<bits/stdc++.h>
+#include <iostream>
+#include <cstdlib>
+#include <unistd.h>
 using namespace std;
 
+bool cmp(const pair<char, int>&a, const pair<char,int>&b){
+    return a.second > b.second;
+}
+
 int main(){
-    
+    #ifndef ONLINE_JUDGE
+    	freopen("Results/result-NAM.txt", "w", stdout);
+    #endif
     clock_t start, end; 
     start = clock(); 
-    cout<<"\n\nEnter K value and Input Item : \n\n"<<endl;
-    int inpk;
-    cin>>inpk;
-    char input;
-    cin>>input;
-    vector<int>v(26,0);
+    char ch = 'k';
+    int K = 3;
+    // cout<<"\n\nEnter K value and Input Item\n\n"<<endl;
+    // cin>>K>>ch;
+    map<char,int>supportCnt;
     fstream newfile;
-    int temp = 0;
     newfile.open("dataset/db.txt",ios::in);
-    cout<<"\nComputing elements...\n";
-    std::chrono::seconds dura( 5);
-    std::this_thread::sleep_for( dura );
     if (newfile.is_open()){
         string tp;
+        int cnt = 0;
         while(getline(newfile, tp)){
+            cnt++;
             // cout << tp << "\n";
-            int k = tp.length();
-            for(int i=0;i < tp.size();i++)
-            {
-                if(tp[i]==input)
-                {
-                    k=i;
-                    break;
-                }
-                for(int j=0; j<tp.size(); j++){
-                    if(tp[i] == tp[j]){
-                        temp += tp[i] * tp[j];
-                    }
-                }
-            }
-            for(int i=k+1;i<tp.size();i++)
-            {
-                v[tp[i]-'a']++;
+            int flag = 0;
+            for(int i=0; i<tp.length(); i++){
+                // if(tp[i] == ch){
+                //     flag = 1;
+                // }
+                // if(flag == 0){
+                //     continue;
+                // }
+              
+                supportCnt[tp[i]]++;
             }
         }
         newfile.close();
     }
-    int b=1;
-    for(int i=0;i<1000;i++)
-    {
-        for(int j=0;j<1000;j++)
-        {
-            b=0;
-        }
+   
+    vector<pair<char,int>>pq;
+    for(auto i : supportCnt){
+        pq.push_back({i.first, i.second});
     }
-            
-    vector<pair<int,char>>ans;
-    for(int i=0;i<26;i++)
-    {
-    	ans.push_back({v[i],i+'a'});
-    }
-    sort(ans.begin(),ans.end(), greater<pair<int,char>>());
+    sort(pq.begin(), pq.end(), cmp);
     cout<<"\n";
     cout<<"\n";
     cout<<"\n";
     cout<<"These are the top K elements we have : \n\n\n";
     cout<<"\t\t-------\n";
-    for(int i=0;i<min(inpk,(int)ans.size());i++)
-    {
-        cout<<"\t\t|  "<<ans[i].second<<"  |\n";
+    for(int i=0; i<K; i++){
+        cout<<"\t\t|  "<<pq[i].first<<"  |\n";
         cout<<"\t\t-------\n";
     }
     cout<<"\n\n";
     end = clock(); 
-    // double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-    // cout << "\e[1mTime taken by program is : \e[0m" <<fixed  << time_taken << setprecision(5); 
-    // cout << " sec " << endl; 
-    // cout << "Time taken by program is : " << fixed  << time_taken << setprecision(5); 
-    // cout << " sec " << endl; 
+    double time_taken = double(end - start) / double(CLOCKS_PER_SEC); 
+    cout << "Time taken by program is : " << fixed  << time_taken << setprecision(5); 
+    cout << " sec " << endl; 
     return 0;
 }
+
+// VIAM : 0.003721 sec
+// VAM  : 0.003920 sec
+// NAM : 0.000536 sec 

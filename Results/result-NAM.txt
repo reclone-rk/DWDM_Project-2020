@@ -1,0 +1,16 @@
+
+
+
+These are the top K elements we have : 
+
+
+		-------
+		|  q  |
+		-------
+		|  a  |
+		-------
+		|  d  |
+		-------
+
+
+Time taken by program is : 0.006316 sec 

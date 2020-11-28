@@ -6,12 +6,15 @@ bool cmp(const pair<char, int>&a, const pair<char,int>&b){
 }
 
 int main(){
+    #ifndef ONLINE_JUDGE
+        freopen("Results/result-VIAM.txt", "w", stdout);
+    #endif
     clock_t start, end; 
-    start = clock(); 
-    char ch;
-    int K;
-    cout<<"\n\nEnter K value and Input Item\n\n"<<endl;
-    cin>>K>>ch;
+    
+    char ch = 'k';
+    int K = 3;
+    // cout<<"\n\nEnter K value and Input Item\n\n"<<endl;
+    // cin>>K>>ch;
     map<char,int>supportCnt;
     map<int, string> originalData;
     map<char, vector<pair<int,int>>> vamDS;
@@ -35,26 +38,27 @@ int main(){
         }
         newfile.close();
     }
-    cout<<"\nCreating Table...\n\n\n";
-    std::chrono::seconds dura( 5);
-    std::this_thread::sleep_for( dura );
-    for(auto it = vamDS.begin(); it != vamDS.end(); it++){
-        for(int l=0; l<180; l++){
-            cout<<"_";
-        }
-        cout<<"\n\n";
-        cout<<(it->first)<<": ";
-        vector<pair<int,int>>vj = it->second;
+    start = clock(); 
+    // cout<<"\nCreating Table...\n\n\n";
+    // std::chrono::seconds dura( 5);
+    // std::this_thread::sleep_for( dura );
+    // for(auto it = vamDS.begin(); it != vamDS.end(); it++){
+    //     for(int l=0; l<180; l++){
+    //         cout<<"_";
+    //     }
+    //     cout<<"\n\n";
+    //     cout<<(it->first)<<": ";
+    //     vector<pair<int,int>>vj = it->second;
        
-        for(int j=0; j<vj.size(); j++){
-            cout<<"["<<vj[j].first<<","<<vj[j].second<<"]"<<" ";
-        }
-        cout<<endl;
-    }
-     for(int l=0; l<180; l++){
-            cout<<"_";
-        }
-        cout<<"\n\n";
+    //     for(int j=0; j<vj.size(); j++){
+    //         cout<<"["<<vj[j].first<<","<<vj[j].second<<"]"<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+    //  for(int l=0; l<180; l++){
+    //         cout<<"_";
+    //     }
+    //     cout<<"\n\n";
     vector<pair<int,int>>vj = vamDS[ch];
     for(int i=0; i<vj.size(); i++){
         int sid = vj[i].first;
@@ -80,8 +84,8 @@ int main(){
     }
     cout<<"\n\n";
     end = clock(); 
-    // double time_taken = double(end - start) / double(CLOCKS_PER_SEC); 
-    // cout << "Time taken by program is : " << fixed  << time_taken << setprecision(5); 
-    // cout << " sec " << endl; 
+    double time_taken = double(end - start) / double(CLOCKS_PER_SEC); 
+    cout << "Time taken by program is : " << fixed  << time_taken << setprecision(5); 
+    cout << " sec " << endl; 
     return 0;
 }
