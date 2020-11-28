@@ -9,9 +9,6 @@ bool cmp(const pair<char, int>&a, const pair<char,int>&b){
 }
 
 int main(){
-    #ifndef ONLINE_JUDGE
-    	freopen("Results/result-NAM.txt", "w", stdout);
-    #endif
     clock_t start, end; 
     start = clock(); 
     char ch = 'k';

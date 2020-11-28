@@ -9,11 +9,7 @@ bool cmp(const pair<char, int>&a, const pair<char,int>&b){
 }
 
 int main(){
-    #ifndef ONLINE_JUDGE
-        freopen("Results/result-VAM.txt", "w", stdout);
-    #endif
     clock_t start, end; 
-    
     char ch = 'k';
     int K = 3;
     // cout<<"\n\nEnter K value and Input Item\n\n"<<endl;
