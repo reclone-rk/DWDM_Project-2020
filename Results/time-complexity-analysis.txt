@@ -1,10 +1,11 @@
-Time taken by NAM is  : 0.006316 sec 
+Time taken by NAM is                : 0.006316 sec 
 
-Time taken by VAM is  : 0.001653 sec 
+Time taken by VAM is                : 0.001653 sec 
 
-Time taken by VIAM is : 0.000914 sec
+Time taken by VIAM is               : 0.000914 sec
+
+Time taken by Extended algorithm is : 0.000163 sec
 
 Time Complexity Analysis : NAM > VAM > VIAM (Working as per the paper)
-
 
 Hurray!
